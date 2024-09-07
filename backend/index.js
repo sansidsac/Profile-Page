@@ -2,6 +2,7 @@ import express from "express";
 import mongoose from "mongoose";
 import { MONGODBURL, PORT} from "./config.js";
 import cors from 'cors';
+import userAccountRoute from './routes/userAccountRoute.js'
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.get('/',async(request,response)=>{
     return response.status(234).send('Welcome to Profile Page')
 })
 
+app.use('/user',userAccountRoute)
 
 mongoose.connect(MONGODBURL).then(() => {
     console.log("App Connected to MongoDB successfully");
